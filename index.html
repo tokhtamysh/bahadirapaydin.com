@@ -1,164 +1,132 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BAHADIR APAYDIN</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap">
+    <title>Uzay Boşluğu</title>
+    <style>
+        /* TEMEL AYARLAR */
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000; /* Derin siyah */
+            overflow: hidden; /* Scroll barlarını kapatır */
+        }
+
+        /* SAMANYOLU ARKA PLANI */
+        .milky-way {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Unsplash'ten yüksek çözünürlüklü bir Samanyolu görseli */
+            background: url('https://images.unsplash.com/photo-1538370965046-79c0d6907d47?q=80&w=2069&auto=format&fit=crop') no-repeat center center;
+            background-size: cover; /* Ekranı doldurur */
+            opacity: 0.6; /* Göz yormaması için hafif kıstım */
+            z-index: 1;
+        }
+
+        /* KAYAN YILDIZ GENEL TASARIMI */
+        .star {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 4px;
+            height: 4px;
+            background: #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px rgba(255,255,255,0.1), 0 0 0 8px rgba(255,255,255,0.1), 0 0 20px rgba(255,255,255,1);
+            animation: animate 3s linear infinite;
+            opacity: 0; /* Başlangıçta görünmez */
+            z-index: 2;
+        }
+
+        /* YILDIZIN KUYRUĞU */
+        .star::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 300px;
+            height: 1px;
+            background: linear-gradient(90deg, #fff, transparent);
+        }
+
+        /* ANİMASYON HAREKETİ */
+        @keyframes animate {
+            0% {
+                transform: rotate(315deg) translateX(0);
+                opacity: 1;
+            }
+            70% {
+                opacity: 1;
+            }
+            100% {
+                transform: rotate(315deg) translateX(-1000px);
+                opacity: 0;
+            }
+        }
+
+        /* RASTGELELİK (Farklı konumlardan ve zamanlarda gelmeleri için) */
+        
+        /* 1. Yıldız */
+        .star:nth-child(1) {
+            top: 0px;
+            right: 0px;
+            left: initial;
+            animation-delay: 0s;
+            animation-duration: 2s;
+        }
+
+        /* 2. Yıldız */
+        .star:nth-child(2) {
+            top: 0px;
+            right: 80px;
+            left: initial;
+            animation-delay: 0.4s;
+            animation-duration: 3s;
+        }
+
+        /* 3. Yıldız */
+        .star:nth-child(3) {
+            top: 80px;
+            right: 0px;
+            left: initial;
+            animation-delay: 0.8s;
+            animation-duration: 2.5s;
+        }
+
+        /* 4. Yıldız */
+        .star:nth-child(4) {
+            top: 0px;
+            right: 180px;
+            left: initial;
+            animation-delay: 1.2s;
+            animation-duration: 2.2s;
+        }
+        
+         /* 5. Yıldız (Daha aşağıdan) */
+         .star:nth-child(5) {
+            top: 300px;
+            right: 0px;
+            left: initial;
+            animation-delay: 2s;
+            animation-duration: 4s;
+        }
+    </style>
 </head>
 <body>
-    <div id="particles-js"></div>
-    
-    <div class="container">
-        <div class="form-box">
-            <h2>LOGIN</h2>
-            <p>Welcome back</p>
-            <p>We're working on something great.</p>
-               <p> 𝕏 @bahadirapaydin_ </p>
-            
-            <form>
-                <div class="input-group">
-                    <input type="text" id="username" required class="input-field">
-                    <label for="username">Username</label>
-                    <div class="glow-line"></div>
-                </div>
-                
-                <div class="input-group">
-                    <input type="password" id="password" required class="input-field">
-                    <label for="password">Password</label>
-                    <div class="glow-line"></div>
-                </div>
-                
-                <div class="remember-forgot">
-                    <div class="remember">
-                        <input type="checkbox" id="remember">
-                        <label for="remember">Remember me</label>
-                    </div>
-                    <a href="#" class="forgot">Forgot Password?</a>
-                </div>
-                
-                <button type="submit" class="login-btn">
-                    <span>SIGN IN</span>
-                    <div class="btn-glow"></div>
-                </button>
-                
-                <div class="signup-link">
-                    Don't have an account? <a href="#">Register</a>
-                </div>
-            </form>
-        </div>
-    </div>
 
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            particlesJS('particles-js', {
-                "particles": {
-                    "number": {
-                        "value": 100,
-                        "density": {
-                            "enable": true,
-                            "value_area": 800
-                        }
-                    },
-                    "color": {
-                        "value": "#ffd700"
-                    },
-                    "shape": {
-                        "type": "circle",
-                        "stroke": {
-                            "width": 0,
-                            "color": "#000000"
-                        },
-                        "polygon": {
-                            "nb_sides": 5
-                        }
-                    },
-                    "opacity": {
-                        "value": 0.8,
-                        "random": true,
-                        "anim": {
-                            "enable": true,
-                            "speed": 1,
-                            "opacity_min": 0.4,
-                            "sync": false
-                        }
-                    },
-                    "size": {
-                        "value": 5,
-                        "random": true,
-                        "anim": {
-                            "enable": true,
-                            "speed": 2,
-                            "size_min": 1,
-                            "sync": false
-                        }
-                    },
-                    "line_linked": {
-                        "enable": true,
-                        "distance": 150,
-                        "color": "#ffd700",
-                        "opacity": 0.6,
-                        "width": 1.5
-                    },
-                    "move": {
-                        "enable": true,
-                        "speed": 2,
-                        "direction": "none",
-                        "random": true,
-                        "straight": false,
-                        "out_mode": "out",
-                        "bounce": false,
-                        "attract": {
-                            "enable": true,
-                            "rotateX": 600,
-                            "rotateY": 1200
-                        }
-                    }
-                },
-                "interactivity": {
-                    "detect_on": "canvas",
-                    "events": {
-                        "onhover": {
-                            "enable": true,
-                            "mode": "repulse"
-                        },
-                        "onclick": {
-                            "enable": true,
-                            "mode": "push"
-                        },
-                        "resize": true
-                    },
-                    "modes": {
-                        "grab": {
-                            "distance": 400,
-                            "line_linked": {
-                                "opacity": 1
-                            }
-                        },
-                        "bubble": {
-                            "distance": 400,
-                            "size": 40,
-                            "duration": 2,
-                            "opacity": 8,
-                            "speed": 3
-                        },
-                        "repulse": {
-                            "distance": 100,
-                            "duration": 0.4
-                        },
-                        "push": {
-                            "particles_nb": 4
-                        },
-                        "remove": {
-                            "particles_nb": 2
-                        }
-                    }
-                },
-                "retina_detect": true
-            });
-        });
-    </script>
+    <div class="milky-way"></div>
+
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+
 </body>
 </html>
